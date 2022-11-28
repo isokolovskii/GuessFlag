@@ -39,7 +39,9 @@ class ViewController: UIViewController {
         button1.layer.borderColor = UIColor.lightGray.cgColor
         button2.layer.borderColor = UIColor.lightGray.cgColor
         button3.layer.borderColor = UIColor.lightGray.cgColor
-                
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(showScore))
+        
         startGame(action: nil)
     }
 
@@ -81,6 +83,12 @@ class ViewController: UIViewController {
             ac = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
         }
+        present(ac, animated: true)
+    }
+    
+    @objc func showScore() {
+        let ac = UIAlertController(title: "Your score is", message: "\(score)", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Ok", style: .default))
         present(ac, animated: true)
     }
 }
